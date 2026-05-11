@@ -102,3 +102,122 @@ $boxshadow-card-float = 0 12px 16px -4px rgba(0, 0, 0, 0.2)
 $boxshadow-button = 0 0 2px 0px rgba(0, 0, 0, 0.04), 0 0 8px 0px rgba(0, 0, 0, 0.04)
 $boxshadow-block = 0 1px 4px 0px rgba(0, 0, 0, 0.02), 0 2px 8px 0px rgba(0, 0, 0, 0.02)
 $boxshadow-toast = 0 4px 8px 0px rgba(0, 0, 0, 0.1), 0 12px 16px -4px rgba(0, 0, 0, 0.2)
+
+
+// ========================
+// Bookshelf Academic Style
+// ========================
+
+// Override to academic light theme
+// Use html:root for higher specificity to override theme_base.styl
+html:root
+  --background: #ffffff
+  --card: #ffffff
+  --text: #2c3e50
+  --text-p1: #34495e
+  --text-p2: #555555
+  --text-p3: #777777
+  --text-p4: #999999
+  --link: #1a5276
+  --link-a20: rgba(26, 82, 118, 0.2)
+  --theme: #2e86c1
+  --theme-a10: rgba(46, 134, 193, 0.1)
+  --theme-a20: rgba(46, 134, 193, 0.2)
+  --theme-a30: rgba(46, 134, 193, 0.3)
+  --block: rgba(0, 0, 0, 0.04)
+  --block-border: rgba(0, 0, 0, 0.06)
+
+// Hide left sidebar on homepage to avoid duplication with bookshelf
+.l_body.index .l_left
+  display: none
+
+// Bookshelf layout
+.bookshelf-wrapper
+  margin: 2rem 1rem
+  padding: 1rem
+  background: #faf8f5
+  border-radius: 8px
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06)
+  @media screen and (max-width: $device-mobile-max)
+    margin: 1rem 0.5rem
+    padding: 0.75rem
+
+.bookshelf
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-end
+  justify-content: center
+  gap: 10px
+  row-gap: 24px
+  padding: 2rem 1.5rem 1rem
+  min-height: 1248px
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 290px, #d4c5b0 290px, #c8b8a0 294px, #b8a890 296px, transparent 296px, transparent 312px)
+  @media screen and (max-width: $device-mobile-max)
+    gap: 6px
+    row-gap: 20px
+    padding: 1.5rem 0.75rem 0.75rem
+    min-height: 1036px
+    background: repeating-linear-gradient(to bottom, transparent 0, transparent 240px, #d4c5b0 240px, #c8b8a0 244px, #b8a890 246px, transparent 246px, transparent 260px)
+
+.book-spine
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 56px
+  height: 290px
+  border-radius: 3px 3px 0 0
+  background: var(--book-color, #8B4513)
+  color: rgba(255,255,255,0.92)
+  text-decoration: none
+  position: relative
+  box-shadow: inset 2px 0 3px rgba(255,255,255,0.12), inset -2px 0 4px rgba(0,0,0,0.25), 1px 2px 5px rgba(0,0,0,0.18)
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease
+  overflow: hidden
+  flex-shrink: 0
+  &:hover
+    transform: translateY(-14px)
+    box-shadow: inset 2px 0 3px rgba(255,255,255,0.12), inset -2px 0 4px rgba(0,0,0,0.25), 0 14px 24px rgba(0,0,0,0.22)
+    z-index: 2
+  &:active
+    transform: translateY(-6px)
+  @media screen and (max-width: $device-mobile-max)
+    width: 48px
+    height: 240px
+    &:hover
+      transform: translateY(-10px)
+
+  .spine-content
+    writing-mode: vertical-rl
+    text-orientation: mixed
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    padding: 14px 2px
+    height: 100%
+    width: 100%
+    box-sizing: border-box
+
+  .spine-title
+    font-size: 13px
+    font-weight: 500
+    letter-spacing: 0.5px
+    line-height: 1.2
+    flex: 1
+    overflow: hidden
+    text-overflow: ellipsis
+    text-align: center
+    word-break: break-all
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2)
+    @media screen and (max-width: $device-mobile-max)
+      font-size: 12px
+
+  .spine-date
+    font-size: 10px
+    opacity: 0.8
+    font-weight: 400
+    letter-spacing: 0.5px
+    white-space: nowrap
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2)
+    @media screen and (max-width: $device-mobile-max)
+      font-size: 9px

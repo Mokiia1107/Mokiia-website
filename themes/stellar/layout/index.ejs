@@ -6,36 +6,31 @@ if (page.title && page.wiki) {
   page.robots = 'noindex,follow';
 }
 
-function layout_post_card(layout, post, content) {
-  var el = '';
-  var layout = layout;
-  if (layout == 'post' && post.cover != undefined && post.poster != undefined) {
-    layout += ' photo';
-  }
-  el += `<div class="post-card-wrap${scrollreveal(' ')}">`;
-  el += `<a class="post-card ${layout}" href="${pretty_url(post.link || post.path)}">`
-  el += content;
-  el += '</a>';
-  el += '</div>';
-  return el;
-}
-
-function layout_post_list(partial) {
-  var el = '';
-  el += `<div class="post-list post">`;
-  page.posts.each(function(post){
-    if (post.indexing != false) {
-      el += layout_post_card('post', post, partial(post));
-    }
-  })
-  el += '</div>';
-  return el;
-}
-
+var bookColors = [
+  '#8B4513', '#556B2F', '#483D8B', '#800000', '#2F4F4F',
+  '#4B0082', '#191970', '#8B0000', '#006400', '#A0522D',
+  '#5D4037', '#455A64', '#3E2723', '#1B5E20', '#0D47A1'
+];
 %>
 
-<%- partial('_partial/main/navbar/nav_tabs_blog') %>
-<%- layout_post_list(function(post){
-  return partial('_partial/main/post_list/post_card', {post: post})
-}) %>
+<div class="bookshelf-wrapper">
+  <div class="bookshelf">
+    <% var idx = 0; %>
+    <% page.posts.each(function(post){ %>
+      <% if (post.indexing != false) { %>
+        <a class="book-spine<%= scrollreveal(' ') %>"
+           href="<%= pretty_url(post.link || post.path) %>"
+           style="--book-color: <%= bookColors[idx % bookColors.length] %>"
+           title="<%= post.title ? post.title : date(post.date, config.date_format) %>">
+          <div class="spine-content">
+            <span class="spine-title"><%= post.title ? post.title : date(post.date, config.date_format) %></span>
+            <span class="spine-date"><%= date(post.date, 'YYYY-MM-DD') %></span>
+          </div>
+        </a>
+        <% idx++; %>
+      <% } %>
+    <% }) %>
+  </div>
+</div>
+
 <%- partial('_partial/main/post_list/paginator') %>
