@@ -1,5 +1,4 @@
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-import cloudflare from '@astrojs/cloudflare'
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig, fontProviders } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
@@ -44,13 +43,11 @@ export default defineConfig({
 
   // [Adapter]
   // https://docs.astro.build/en/guides/deploy/
-  adapter: cloudflare(),
-  output: 'server',
+  output: 'static',
 
   // [Assets]
   image: {
     responsiveStyles: true,
-    service: { entrypoint: 'astro/assets/services/noop' },
     // domains: ['ghchart.rshah.org'],
     remotePatterns: [{ protocol: 'https' }]
   },

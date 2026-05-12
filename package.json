@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:check": "astro check --watch & astro dev",
-    "build": "astro-pure check && astro check && astro build && npm run build:pages",
-    "build:pages": "rm -rf dist/server/.prerender && cp -r dist/server dist/client/_worker.js && mv dist/client/_worker.js/entry.mjs dist/client/_worker.js/index.js",
+    "build": "astro-pure check && astro check && astro build",
     "preview": "astro preview",
     "sync": "astro sync",
     "check": "astro check",
@@ -16,12 +15,11 @@
     "lint": "eslint --fix 'src/**/*.{js,ts,jsx,tsx,astro}'",
     "yijiansilian": "bun lint && bun sync && bun check && bun format",
     "clean": "rm -rf .astro dist .wrangler",
-    "deploy": "wrangler pages deploy dist/client",
+    "deploy": "wrangler pages deploy dist",
     "cache:avatars": "tsx preset/scripts/cacheAvatars.ts"
   },
   "dependencies": {
     "@astrojs/check": "0.9.8",
-    "@astrojs/cloudflare": "13.1.0",
     "@astrojs/compiler-rs": "^0.1.8",
     "@astrojs/rss": "4.0.18",
     "@waline/client": "^3.13.0",

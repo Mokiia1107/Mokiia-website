@@ -1,4 +1,4 @@
-import type { AstroGlobal, ImageMetadata } from 'astro'
+import type { APIRoute, ImageMetadata } from 'astro'
 import { getImage } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import rss from '@astrojs/rss'
@@ -53,7 +53,7 @@ const renderContent = async (post: CollectionEntry<'blog'>, site: URL) => {
   return String(file)
 }
 
-const GET = async (context: AstroGlobal) => {
+export const GET: APIRoute = async (context) => {
   const allPostsByDate = sortMDByDate(await getBlogCollection()) as CollectionEntry<'blog'>[]
   const siteUrl = context.site ?? new URL(import.meta.env.SITE)
 
@@ -79,5 +79,3 @@ const GET = async (context: AstroGlobal) => {
     )
   })
 }
-
-export { GET }
