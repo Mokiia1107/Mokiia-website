@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "dev:check": "astro check --watch & astro dev",
     "build": "astro-pure check && astro check && astro build && npm run build:pages",
-    "build:pages": "cp -r dist/server dist/client/_worker.js",
+    "build:pages": "rm -rf dist/server/.prerender && cp -r dist/server dist/client/_worker.js && mv dist/client/_worker.js/entry.mjs dist/client/_worker.js/index.js",
     "preview": "astro preview",
     "sync": "astro sync",
     "check": "astro check",
