@@ -1,0 +1,7 @@
+name = "mokiia-website"
+main = "dist/_worker.js/index.js"
+compatibility_date = "2025-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+[site]
+bucket = "./dist/client"
