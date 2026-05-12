@@ -4,4 +4,4 @@ build/
 .DS_Store
 .vscode/
 .astro/
-.vercel/
+.vercel/.wrangler/
