@@ -1,9 +1,4 @@
 name = "mokiia-website"
+pages_build_output_dir = "dist/client"
 compatibility_date = "2025-05-01"
 compatibility_flags = ["nodejs_compat"]
-
-[[kv_namespaces]]
-binding = "SESSION"
-
-[images]
-binding = "IMAGES"
