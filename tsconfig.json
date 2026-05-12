@@ -12,6 +12,7 @@
     "verbatimModuleSyntax": true,
     // Others
     "strictNullChecks": true,
+    "resolveJsonModule": true,
     // Paths
     "paths": {
       "@/assets/*": ["./src/assets/*"],
