@@ -1,14 +1,13 @@
 ---
-title: ’沙耶之歌——不必要的存在
+title: '沙耶之歌——不必要的存在'
 publishDate: 'Nov 03, 2025'
-updatedDate: ‘Nov 03, 2025'
-description: ‘沙耶之歌玩后感’
+updatedDate: 'Nov 03, 2025'
+description: '沙耶之歌玩后感'
 tags:
   - galgame
   - Thinking
   - Mood
-language: ‘Chinese’
-heroImage: { src: '' }
+language: 'Chinese'
 ---
 
 在物种演化的过程中，最不必要的存在之一是文明的存在，而当人被剥离掉一切文明的框架后，我们到底是得到了更纯粹的情感，还是基于欲望的幻觉？
