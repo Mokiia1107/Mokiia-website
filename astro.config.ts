@@ -4,6 +4,10 @@ import AstroPureIntegration from 'astro-pure'
 import { defineConfig, fontProviders } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+import { fileURLToPath } from 'node:url'
+import path from 'node:path'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // Local integrations
 import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
@@ -124,6 +128,23 @@ export default defineConfig({
     // mdx(),
     AstroPureIntegration(config)
   ],
+
+  // [Vite]
+  vite: {
+    resolve: {
+      alias: {
+        '@/assets': path.resolve(__dirname, './src/assets'),
+        '@/public': path.resolve(__dirname, './public'),
+        '@/components': path.resolve(__dirname, './src/components'),
+        '@/layouts': path.resolve(__dirname, './src/layouts'),
+        '@/utils': path.resolve(__dirname, './src/utils'),
+        '@/plugins': path.resolve(__dirname, './src/plugins'),
+        '@/pages': path.resolve(__dirname, './src/pages'),
+        '@/types': path.resolve(__dirname, './src/types'),
+        '@/site-config': path.resolve(__dirname, './src/site.config.ts')
+      }
+    }
+  },
 
   // [Experimental]
   experimental: {
