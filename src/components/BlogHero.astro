@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets'
+import type { InferEntrySchema } from 'astro:content'
+
+import { FormattedDate, Icon } from 'astro-pure/user'
+import { cn } from 'astro-pure/utils'
+
+interface Props {
+  data: InferEntrySchema<'blog'>
+  remarkPluginFrontmatter: Record<string, unknown>
+}
+
+const {
+  data: { title, description, draft, heroImage, publishDate, updatedDate, tags, language },
+  remarkPluginFrontmatter
+} = Astro.props
+
+const dateTimeOptions: Intl.DateTimeFormatOptions = {
+  month: 'short'
+}
+
+const minutesRead = remarkPluginFrontmatter.minutesRead as string | undefined
+const hasHeroImage = !!heroImage
+const isExternalSrc = typeof heroImage?.src === 'string'
+const heroColor = heroImage?.color
+---
+
+{/* Gradient background bar when color is set */}
+{
+  heroColor && (
+    <div
+      class='pointer-events-none absolute start-0 top-0 z-0 h-48 w-full rounded-b-[3rem] opacity-20'
+      style={`background-image: linear-gradient(to bottom, ${heroColor}, transparent)`}
+    />
+  )
+}
+
+{/* Hero image */}
+{
+  hasHeroImage && (
+    <div class='relative mb-8 mt-2'>
+      <div class='relative z-10 overflow-hidden rounded-2xl shadow-lg'>
+        {isExternalSrc ? (
+          <img
+            src={heroImage.src as string}
+            alt={heroImage.alt || title}
+            class='h-auto w-full object-cover'
+            fetchpriority='high'
+            loading='eager'
+          />
+        ) : (
+          <Image
+            alt={heroImage.alt || title}
+            class='h-auto w-full object-cover'
+            fetchpriority='high'
+            loading='eager'
+            {...(heroImage as any)}
+          />
+        )}
+      </div>
+      {/* Decorative blur shadow behind */}
+      <div
+        class='absolute -bottom-4 start-1/2 z-0 h-full w-[90%] -translate-x-1/2 rounded-[2rem] opacity-40 blur-2xl'
+        style={`background-color: ${heroColor || 'hsl(var(--primary) / var(--un-bg-opacity))'}`}
+      />
+    </div>
+  )
+}
+
+{/* Draft badge */}
+{draft ? <span class='mb-2 inline-block rounded bg-red-500/10 px-2 py-0.5 text-sm font-medium text-red-500'>(Draft)</span> : null}
+
+{/* Meta info bar */}
+<div class='flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground'>
+  {/* Date */}
+  <div class='flex items-center gap-1.5'>
+    <Icon name='calendar' class='size-4' />
+    <FormattedDate class='font-sans' date={publishDate} dateTimeOptions={dateTimeOptions} />
+    {
+      updatedDate && (
+        <span class='flex items-center gap-1 text-muted-foreground/70'>
+          <span>/</span>
+          <span>Updated</span>
+          <FormattedDate class='font-sans' date={updatedDate} dateTimeOptions={dateTimeOptions} />
+        </span>
+      )
+    }
+  </div>
+
+  {/* Reading time */}
+  {
+    minutesRead && (
+      <div class='flex items-center gap-1.5'>
+        <Icon name='time' class='size-4' />
+        <span>{minutesRead}</span>
+      </div>
+    )
+  }
+
+  {/* Language */}
+  {
+    language && (
+      <div class='flex items-center gap-1.5'>
+        <Icon name='earth' class='size-4' />
+        <span>{language}</span>
+      </div>
+    )
+  }
+
+  {/* Tags */}
+  {
+    !!tags?.length && (
+      <div class='flex items-center gap-1.5'>
+        <Icon name='hashtag' class='size-4' />
+        <div class='flex flex-wrap gap-x-1'>
+          {tags.map((tag: string, i: number) => (
+            <span>
+              <a
+                aria-label={`View more blogs with the tag ${tag}`}
+                class='hover:text-foreground hover:underline hover:underline-offset-4 transition-colors'
+                data-pagefind-filter='tag'
+                href={`/tags/${tag}`}
+              >
+                {tag}
+              </a>
+              {i < tags.length - 1 && <span class='text-muted-foreground/50'>/</span>}
+            </span>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</div>
+
+{/* Title */}
+<h1
+  class={cn(
+    'mt-5 text-3xl font-semibold tracking-tight sm:text-4xl',
+    heroColor && 'text-balance'
+  )}
+>
+  {title}
+</h1>
+
+{/* Description / Lead */}
+{
+  description && (
+    <p class='mt-4 max-w-[65ch] text-lg leading-relaxed text-muted-foreground'>
+      {description}
+    </p>
+  )
+}
+
+{/* Divider */}
+<div class='mt-8 h-px w-full bg-border/60' />

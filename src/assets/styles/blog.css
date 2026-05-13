@@ -1,0 +1,135 @@
+/* Blog post typography enhancements */
+
+/* Paragraph spacing and readability */
+#content p {
+  line-height: 1.8;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+/* Blockquote styling */
+#content blockquote {
+  border-left: 4px solid hsl(var(--primary) / var(--un-border-opacity, 1));
+  background-color: hsl(var(--muted) / 0.4);
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: hsl(var(--foreground) / 0.85);
+}
+
+#content blockquote p:first-of-type {
+  margin-top: 0;
+}
+
+#content blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Heading spacing and anchor links */
+#content h1,
+#content h2,
+#content h3,
+#content h4 {
+  scroll-margin-top: 5rem;
+}
+
+#content h2 {
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+#content h3 {
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Auto anchor link indicator on hover */
+#content h2 a[href^='#'],
+#content h3 a[href^='#'] {
+  text-decoration: none;
+  opacity: 0;
+  margin-left: 0.25rem;
+  transition: opacity 0.2s;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground) / var(--un-text-opacity, 1));
+}
+
+#content h2:hover a[href^='#'],
+#content h3:hover a[href^='#'] {
+  opacity: 1;
+}
+
+/* Images */
+#content img {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dark #content img {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Lists */
+#content ul,
+#content ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+#content li {
+  margin-top: 0.375em;
+  margin-bottom: 0.375em;
+}
+
+/* Horizontal rule */
+#content hr {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  border-color: hsl(var(--border) / var(--un-border-opacity, 0.5));
+}
+
+/* Inline code */
+#content code:not(pre code) {
+  font-size: 0.875em;
+  padding: 0.2em 0.4em;
+  border-radius: 0.375rem;
+  background-color: hsl(var(--muted) / var(--un-bg-opacity, 1));
+}
+
+/* Code blocks: keep current Shiki styles, just add top/bottom margin */
+#content pre.astro-code {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+/* Table styling */
+#content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-size: 0.9375rem;
+}
+
+#content th,
+#content td {
+  padding: 0.625rem 0.875rem;
+  border: 1px solid hsl(var(--border) / var(--un-border-opacity, 0.6));
+}
+
+#content th {
+  background-color: hsl(var(--muted) / 0.5);
+  font-weight: 600;
+  text-align: left;
+}
+
+#content tr:nth-child(even) td {
+  background-color: hsl(var(--muted) / 0.2);
+}

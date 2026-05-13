@@ -1,0 +1,22 @@
+---
+import type { MarkdownHeading } from 'astro'
+import { TOC as PureTOC } from 'astro-pure/components/pages'
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+---
+
+{
+  !!headings.length && (
+    <div class='rounded-xl border border-border/60 bg-card/50 p-5 shadow-sm backdrop-blur-sm'>
+      <h2 class='mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground'>
+        <span class='inline-block h-1.5 w-1.5 rounded-full bg-primary' />
+        目录
+      </h2>
+      <PureTOC {headings} />
+    </div>
+  )
+}
