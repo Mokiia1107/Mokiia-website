@@ -12,7 +12,7 @@ import 'clsx';
 import { c as config } from './site.config_DMl9LK3H.mjs';
 
 const $$ProjectCard = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$props, $$slots);Major in molecular/information biology. She likes photography, linguistics and writes some stupid novels. Knowing well on Chinese&English, studying Russian& Japanese&Finnish
+  const Astro2 = $$result.createAstro($$props, $$slots);
   Astro2.self = $$ProjectCard;
   const {
     as: Tag = "a",
