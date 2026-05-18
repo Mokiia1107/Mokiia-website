@@ -3,6 +3,7 @@ title: ‘GVS——例外的变迁’
 publishDate: 2025-11-22
 description: '这是文章的简短描述，会显示在列表页'
 tags: ['tag1', 'tag2']
+category: 'Linguistics'
 ---
 当我们用/iː/的发音念meat(/miːt/)时，可能会联想到为什么人们不会用同样的发音去拼读great(/ɡreɪt/)，若详细观察类似的拼写方式与其在单词中实际发音的方式，不难发现其多变性：
 

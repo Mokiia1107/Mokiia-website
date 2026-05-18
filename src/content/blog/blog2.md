@@ -3,6 +3,7 @@ title: ‘复数——基于群体的尊重’
 publishDate: 2025-11-04
 description: '这是文章的简短描述，会显示在列表页'
 tags: ['tag1', 'tag2']
+category: 'Linguistics'
 ---
 
 在对各种语言的敬语体系考察中，不难发现如下有趣的现象：

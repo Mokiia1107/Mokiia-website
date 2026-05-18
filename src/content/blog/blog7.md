@@ -3,6 +3,7 @@ title: '词源浅析——商店、仓库与杂志'
 publishDate: 2026-5-15
 description: '每一个词语，都是一个活着的仓库'
 tags: ['linguistic', 'etymology']
+category: 'Linguistics'
 heroImage:
   src: './Gemini_Generated_Image_wyox4kwyox4kwyox.png'
   alt: '词源浅析头图'

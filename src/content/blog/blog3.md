@@ -3,6 +3,7 @@ title: ‘Evangelion——在人生分界线处的选择’
 publishDate: 2025-11-05
 description: '这是文章的简短描述，会显示在列表页'
 tags: ['tag1', 'tag2']
+category: 'Impressions'
 ---
 假如问我为何要为其他人推荐EVA，最好的答案可能是：它是为了回答“我将要向哪去”而创作的：
 神之子对于补完计划的抉择，决定了人类究竟以何种形态存在：

@@ -7,6 +7,7 @@ tags:
   - galgame
   - Thinking
   - Mood
+category: 'Impressions'
 language: 'Chinese'
 heroImage:
   src: './thumbnail.png'

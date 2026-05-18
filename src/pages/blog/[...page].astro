@@ -10,6 +10,14 @@ import config from '@/site-config'
 
 export const prerender = true
 
+const CATEGORIES = [
+  { name: 'Impressions', slug: 'impressions' },
+  { name: 'Linguistics', slug: 'linguistics' },
+  { name: 'Pensées', slug: 'pensees' },
+  { name: 'Fiction', slug: 'fiction' },
+  { name: 'Photographie', slug: 'photographie' }
+]
+
 export const getStaticPaths = (async ({ paginate }) => {
   const collections = sortMDByDate(await getBlogCollection())
   const uniqueTags = getUniqueTagsWithCount(collections).map(([tag]) => tag)
@@ -59,7 +67,37 @@ const paginationProps = {
       page.data.length === 0 ? (
         <p>No posts yet.</p>
       ) : (
-        <div class='grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8'>
+        <div class='grid gap-y-16 sm:grid-cols-[auto_3fr_1fr] sm:gap-x-8'>
+          {/* left sidebar - categories */}
+          <aside class='animate min-w-36' id='left-sidebar'>
+            <h2 class='mb-3 text-lg font-medium'>Posts</h2>
+            <ul class='flex flex-col gap-y-1.5'>
+              <li>
+                <a
+                  href='/blog'
+                  class='text-foreground font-medium hover:text-primary'
+                  aria-current='page'
+                >
+                  All Posts
+                </a>
+              </li>
+              <ul class='ms-4 flex flex-col gap-y-1.5 border-l border-border pl-3'>
+                {
+                  CATEGORIES.map((cat) => (
+                    <li>
+                      <a
+                        href={`/blog/category/${cat.slug}`}
+                        class='text-muted-foreground transition-colors hover:text-foreground'
+                      >
+                        {cat.name}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </ul>
+          </aside>
+
           <section aria-label='Blog posts list' class='animate' id='content'>
             {/* header */}
             <div class='mb-3 flex flex-col justify-between text-sm sm:mb-5 sm:flex-row'>
@@ -79,7 +117,7 @@ const paginationProps = {
             <Paginator {...paginationProps} />
           </section>
 
-          {/* sidebar */}
+          {/* right sidebar - tags */}
           {!!uniqueTags.length && (
             <aside class='animate' id='sidebar'>
               <h2 class='mb-4 flex items-center text-lg font-medium'>
