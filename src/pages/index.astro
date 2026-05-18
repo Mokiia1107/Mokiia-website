@@ -19,6 +19,24 @@ const MAX_POSTS = 10
 const allPosts = await getBlogCollection()
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
+const CATEGORIES = [
+  { name: 'Impressions', slug: 'impressions' },
+  { name: 'Linguistics', slug: 'linguistics' },
+  { name: 'Pensées', slug: 'pensees' },
+  { name: 'Fiction', slug: 'fiction' },
+  { name: 'Photographie', slug: 'photographie' }
+]
+
+const postsByCategory = CATEGORIES.map(cat => {
+  const posts = allPostsByDate.filter(
+    (post) =>
+      'category' in post.data &&
+      typeof post.data.category === 'string' &&
+      post.data.category.toLowerCase() === cat.name.toLowerCase()
+  ).slice(0, 3)
+  return { ...cat, posts }
+})
+
 const imagePath = config.logo.src
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/*.{jpeg,jpg,png,gif,avif,webp}'
@@ -68,47 +86,37 @@ if (!images[imagePath])
       </Section>
       {
         allPostsByDate.length > 0 && (
-          <Section title='Posts'>
-            <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
-              {allPostsByDate.map((p) => (
-                <li class='flex flex-col gap-x-2 sm:flex-row'>
-                  <PostPreview post={p} />
-                </li>
+          <section class='animate flex flex-col gap-y-5 md:flex-row md:gap-y-0'>
+            <div class='text-xl font-medium md:min-w-36'>
+              <h2>Posts</h2>
+            </div>
+            <div class='flex flex-1 flex-col gap-y-8'>
+              {postsByCategory.map(({ name, slug, posts }) => (
+                <div>
+                  <h3 class='mb-3 text-lg font-medium'>
+                    <a href={`/blog/category/${slug}`} class='hover:text-primary transition-colors'>
+                      {name}
+                    </a>
+                  </h3>
+                  {posts.length > 0 ? (
+                    <ul class='ms-4 flex flex-col gap-y-2 pl-4'>
+                      {posts.map((p) => (
+                        <li class='flex flex-col gap-x-2 sm:flex-row'>
+                          <PostPreview post={p} />
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p class='ms-4 text-sm text-muted-foreground pl-4'>
+                      No posts yet.
+                    </p>
+                  )}
+                </div>
               ))}
-            </ul>
-            <Button title='More posts' class='w-fit self-end' href='/blog' variant='ahead' />
-          </Section>
+              <Button title='More posts' class='w-fit self-end' href='/blog' variant='ahead' />
+            </div>
+          </section>
         )
-      }
-
-      {
-        /* <Section title='Experience'>
-      <Card
-        heading='Lorem Ipsum'
-        subheading='Sit amet consectetur'
-        date='Dec 2022 - Nov 2023'
-        imagePath='/src/assets/about-astro.png'
-        altText='Lorem, ipsum dolor sit'
-        imageClass='h-12 w-auto md:-start-16'
-      >
-        <ul class='ms-4 list-disc text-muted-foreground'>
-          <li>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-            molestiae laboriosam pariatur!
-
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
-          </li>
-        </ul>
-      </Card>
-      <Card
-        heading='Lorem Ipsum'
-        subheading='Sit amet consectetur'
-        date='Dec 2022 - Nov 2023'
-        imagePath='/src/assets/about-astro.png'
-        altText='Lorem, ipsum dolor sit'
-        imageClass='h-12 w-auto md:-start-16'
-      />
-    </Section> */
       }
       <Section title='Education'>
         <Card
