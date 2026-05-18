@@ -113,6 +113,11 @@ const { class: className } = Astro.props
     display: inline-block;
   }
 
+  /* Hide RSS subscription button */
+  #waline :global(.wl-rss) {
+    display: none;
+  }
+
   /* Reaction buttons */
   #waline :global(.wl-reaction-title, .wl-reaction-text) {
     display: none;

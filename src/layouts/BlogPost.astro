@@ -7,11 +7,12 @@ import 'katex/dist/katex.min.css'
 import '@/assets/styles/blog.css'
 
 import { MediumZoom } from 'astro-pure/advanced'
-import { ArticleBottom, Copyright } from 'astro-pure/components/pages'
+import { ArticleBottom } from 'astro-pure/components/pages'
 import config from 'virtual:config'
 import PageLayout from '@/layouts/ContentLayout.astro'
 import BlogHero from '@/components/BlogHero.astro'
 import TableOfContents from '@/components/TableOfContents.astro'
+import Copyright from '@/components/Copyright.astro'
 import { Comment, PageInfo } from '@/components/waline'
 
 interface Props {
