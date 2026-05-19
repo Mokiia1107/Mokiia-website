@@ -1,8 +1,8 @@
 ---
 title: ‘魔女宅急便——去往能看到海的街道’
 publishDate: 2026-4-9
-description: '这是文章的简短描述，会显示在列表页'
-tags: ['tag1', 'tag2']
+description: ''
+tags: ['Animation', "Kiki's Delivery Service", 'Growing up']
 category: 'Impressions'
 ---
 喜欢是需要理由的，但直到我们意识到这个理由需要存在之前，我们都可以继续喜欢下去——我们是否可以毫无理由地处于幸福中？

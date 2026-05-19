@@ -1,7 +1,7 @@
 ---
 title: '词源浅析——商店、仓库与杂志'
 publishDate: 2026-5-15
-description: '每一个词语，都是一个活着的仓库'
+description: ''
 tags: ['linguistic', 'etymology']
 category: 'Linguistics'
 heroImage:
