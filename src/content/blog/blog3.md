@@ -1,7 +1,6 @@
 ---
 title: ‘Evangelion——在人生分界线处的选择’
 publishDate: 2025-11-05
-description: '这是文章的简短描述，会显示在列表页'
 tags: ['Animation', 'Evangelion', 'Growing up']
 category: 'Impressions'
 ---
