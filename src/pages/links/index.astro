@@ -2,7 +2,7 @@
 import links from '@/public/links.json'
 import config from 'virtual:config'
 
-import { Collapse, Timeline } from 'astro-pure/user'
+import FriendList from '@/components/links/FriendList.astro'
 import PageLayout from '@/layouts/CommonPage.astro'
 import FriendList from '@/components/links/FriendList.astro'
 
@@ -17,14 +17,7 @@ const linkEditPage = 'https://github.com/cworld1/astro-theme-pure/blob/main/publ
 ---
 
 <PageLayout title='Links' {headings} comment>
-  <p>They're sorted randomly.</p>
   <FriendList list={friends[0]} />
-  <Collapse title='Links with Bad Status'>
-    <FriendList list={friends[1]} />
-  </Collapse>
-  <Collapse title='Link History Book'>
-    <Timeline events={linksConf.logbook} />
-  </Collapse>
   <h2 id='special-links'>Special Links</h2>
   <FriendList list={friends[2]} />
 
