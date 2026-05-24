@@ -1,7 +1,7 @@
 ---
 title: ‘GVS——例外的变迁’
 publishDate: 2025-11-22
-description: ''
+description: 'GVS - Exceptional Changes'
 tags: ['Phonetics']
 category: 'Linguistics'
 ---

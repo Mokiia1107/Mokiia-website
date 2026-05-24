@@ -1,7 +1,7 @@
 ---
 title: ‘魔女宅急便——去往能看到海的街道’
 publishDate: 2026-4-9
-description: ''
+description: "Kiki's Delivery Service - To the town with a view of the sea"
 tags: ['Animation', "Kiki's Delivery Service", 'Growing up']
 category: 'Impressions'
 ---

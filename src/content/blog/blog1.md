@@ -2,7 +2,7 @@
 title: '沙耶之歌——不必要的存在'
 publishDate: 'Nov 03, 2025'
 updatedDate: 'Nov 03, 2025'
-description: ''
+description: 'Saya no Uta - An Unnecessary Existence'
 tags: ['Galgame', 'Saya no Uta']
 category: 'Impressions'
 language: 'Chinese'

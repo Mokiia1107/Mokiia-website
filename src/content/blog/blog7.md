@@ -1,7 +1,7 @@
 ---
 title: '词源浅析——商店、仓库与杂志'
 publishDate: 2026-5-15
-description: ''
+description: 'Etymological Insight  - Stores, Warehouses and Magazines'
 tags: ['linguistic', 'etymology']
 category: 'Linguistics'
 heroImage:

@@ -1,7 +1,7 @@
 ---
 title: ‘橘色、头骨与正发生的事’
 publishDate: 2026-5-8
-description: ''
+description: 'Mandarin, skull, and what is happening now'
 tags: ['Illusion', 'Growing up']
 category: 'Pensées'
 ---
