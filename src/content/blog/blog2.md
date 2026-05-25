@@ -1,7 +1,7 @@
 ---
 title: ‘复数——基于群体的尊重’
 publishDate: 2025-11-04
-description: 'Pluralism - Respect Based on Groups'
+description: 'Pluralism - Respect Based on Populations'
 tags: ['Syntactics']
 category: 'Linguistics'
 ---
