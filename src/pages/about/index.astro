@@ -3,6 +3,7 @@ import { Button, Collapse, Spoiler, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
 import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
+import kimiIcon from '@/assets/tools/kimi-icon-rounded-corner.png'
 
 const headings = [
   { depth: 2, slug: 'hobbies', text: 'Hobbies' },
@@ -88,10 +89,22 @@ const headings = [
         icon: import('@/assets/tools/notion.svg?raw')
       },
       {
-        name: 'Typora',
-        description: 'Markdown Editor',
-        href: 'https://typora.io/',
-        icon: import('@/assets/tools/typora.svg?raw')
+        name: 'Claude',
+        description: 'AI Assistant',
+        href: 'https://claude.com/product/overview',
+        icon: import('@/assets/tools/claude-logo.svg?raw')
+      },
+      {
+        name: 'Gemini',
+        description: 'AI Assistant',
+        href: 'https://gemini.google.com',
+        icon: import('@/assets/tools/gemini-icon-logo.svg?raw')
+      },
+      {
+        name: 'Kimi',
+        description: 'AI Assistant',
+        href: 'https://www.kimi.com/',
+        icon: kimiIcon
       }
     ]}
   />
