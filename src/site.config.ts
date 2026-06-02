@@ -105,8 +105,8 @@ export const integ: IntegrationUserConfig = {
     applyTip: [
       { name: 'Name', val: theme.title },
       { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://mokiia1107.pages.dev/' },
-      { name: 'Avatar', val: 'https://mokiia1107.pages.dev/favicon/favicon.ico' }
+      { name: 'Link', val: 'https://www.m-literature.club/' },
+      { name: 'Avatar', val: 'https://www.m-literature.club/favicon/favicon.ico' }
     ],
     // Cache avatars in `public/avatars/` to improve user experience.
     cacheAvatar: false
