@@ -55,9 +55,9 @@ export default defineConfig({
   // https://docs.astro.build/en/guides/fonts/
   fonts: [
     {
-      provider: fontProviders.fontshare(),
-      name: 'Satoshi',
-      cssVariable: '--font-satoshi',
+      provider: fontProviders.fontsource(),
+      name: 'Inter',
+      cssVariable: '--font-inter',
       // Default included:
       // weights: [400],
       // styles: ["normal", "italics"],
