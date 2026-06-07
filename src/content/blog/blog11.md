@@ -1,6 +1,6 @@
 ---
 title: '世界的切片F U'
-publishDate: 'May 25, 2026'
+publishDate: 'June 8, 2026'
 description: 'Slice of the World F U'
 tags: ['novel', 'original', 'to be continued']
 category: 'Fiction'
