@@ -133,3 +133,13 @@
 #content tr:nth-child(even) td {
   background-color: hsl(var(--muted) / 0.2);
 }
+
+#content .emphasis-dot {
+  background-image: radial-gradient(circle, currentColor 1.5px, transparent 2px); /* 1.5px 就是点点的半径，你可以随意改成 1.8px, 2px 等 */
+  background-size: 1em 100%; /* 保持一个字对应一个点 */
+  background-repeat: repeat-x;
+  background-position: 0% 95%; /* 调节点点上下靠近文字的距离 */
+  
+  /* 如果点点和文字贴得太近，可以稍微加一点点底边距 */
+  padding-bottom: 23px; 
+}
