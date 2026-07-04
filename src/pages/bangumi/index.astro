@@ -1,0 +1,37 @@
+---
+import bangumi from '@/public/bangumi.json'
+
+import PageLayout from '@/layouts/CommonPage.astro'
+import BangumiSection from '@/components/bangumi/BangumiSection.astro'
+
+const headings = [
+  { depth: 2, slug: 'wish', text: '想看' },
+  { depth: 2, slug: 'doing', text: '在看' },
+  { depth: 2, slug: 'collect', text: '看过' }
+]
+
+function formatUpdatedAt(iso: string): string {
+  const date = new Date(iso)
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const offset = -date.getTimezoneOffset()
+  const sign = offset >= 0 ? '+' : '-'
+  const hours = pad((Math.abs(offset) / 60) | 0)
+  const minutes = pad(Math.abs(offset) % 60)
+  return `${date.getFullYear()}/${pad(date.getMonth() + 1)}/${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())} UTC${sign}${hours}:${minutes}`
+}
+---
+
+<PageLayout title='Bangumi' {headings}>
+  <p>想看、在看、看过的番剧列表。</p>
+
+  <BangumiSection id='wish' title='想看' items={bangumi.wish} />
+  <BangumiSection id='doing' title='在看' items={bangumi.doing} />
+  <BangumiSection id='collect' title='看过' items={bangumi.collect} />
+
+  <p class='text-sm text-muted-foreground'>
+    数据来源：
+    <a href={bangumi.listUrl} target='_blank' rel='noopener noreferrer'>Bangumi</a>
+    ，生成时间：
+    <time datetime={bangumi.updatedAt}>{formatUpdatedAt(bangumi.updatedAt)}</time>
+  </p>
+</PageLayout>

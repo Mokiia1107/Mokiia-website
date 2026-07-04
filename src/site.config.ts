@@ -50,6 +50,7 @@ export const theme: ThemeUserConfig = {
       { title: 'Blog', link: '/blog' },
       { title: 'Docs', link: '/docs' },
       { title: 'Projects', link: '/projects' },
+      { title: 'Bangumi', link: '/bangumi' },
       { title: 'Links', link: '/links' },
       { title: 'About', link: '/about' }
     ]

@@ -16,7 +16,8 @@
     "yijiansilian": "bun lint && bun sync && bun check && bun format",
     "clean": "rm -rf .astro dist .wrangler",
     "deploy": "wrangler pages deploy dist",
-    "cache:avatars": "tsx preset/scripts/cacheAvatars.ts"
+    "cache:avatars": "tsx preset/scripts/cacheAvatars.ts",
+    "bangumi:sync": "tsx preset/scripts/fetchBangumi.ts"
   },
   "dependencies": {
     "@astrojs/check": "0.9.8",
@@ -39,6 +40,7 @@
     "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
+    "tsx": "^4.19.0",
     "wrangler": "^4.90.0"
   }
 }
