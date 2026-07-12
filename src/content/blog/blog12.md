@@ -15,7 +15,7 @@ category: 'Linguistics'
 
 <div style="text-align: center;">
   <img src="/images/blog12/fig1.png" alt="meiosis的使用频率随时间的变化" style="max-width: 100%; height: auto;" />
-  <p style="text-align: center; margin-top: 0.5rem;">meiosis的使用频率随时间的变化</p>
+  <p style="text-align: center; margin-top: 0.5rem;"><a href="https://www.etymonline.com/word/meiosis/" target="_blank" rel="noopener +noreferrer">meiosis的使用频率随时间的变化</a></p> 
 </div>
 
 与 meiosis 的修辞学出身不同，mitosis 从诞生起就是为了描述这个具体的细胞学现象：研究染色质形态变化的华尔瑟·弗莱明观察到当细胞进入分裂期时，原本弥散不可见的染色质突然凝结成为一条条可见的清晰粗线，这种显著的形态变化使弗莱明后来使用了同样来自于希腊语中的 mitos（μῖτος）——意为“丝线”和 -osis（-ωσις）后缀来描述这一过程，即 mitosis 的字面意思“线状化的过程”。
