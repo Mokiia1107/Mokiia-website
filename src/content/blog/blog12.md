@@ -11,7 +11,9 @@ category: 'Linguistics'
 
 因此，meiosis 的链条是这样的：“mei- → meion（比较级形容词，"更小的"）→ meioun（动词，"使减少"）→ meiosis（名词，"减少"）”
 
-但在 meiosis 进入英语直到 1580 年以前，它一直指代着修辞意义上的一种表达方式：“用弱或否定的表达来传达积极而有力的意思，从而使其更加强调”。（就像那些奇怪的文学名词“metaphor”、“simile”或“hyperbole”一样）。直到1905年，英国植物学家 J.B. Farmer 和 J.E.S. Moore 正式将细胞中染色体数目减半的现象命名为 meiosis，（喔！如下图所示，它的使用频率几乎是爆发式的增长）。科学家们直接选用了一个本意是“减少”的 meiosis 来表达这一与体细胞（somatic cells）分裂迥异的生物学过程。
+但在 meiosis 进入英语直到 1580 年以前，它一直指代着修辞意义上的一种表达方式：“用弱或否定的表达来传达积极而有力的意思，从而使其更加强调”。（就像那些奇怪的文学名词“metaphor”或“hyperbole”一样）
+
+直到1905年，英国植物学家 J.B. Farmer 和 J.E.S. Moore 正式将细胞中染色体数目减半的现象命名为 meiosis，（喔！如下图所示，它的使用频率几乎是爆发式的增长）。科学家们直接选用了一个本意是“减少”的 meiosis 来表达这一与体细胞（somatic cells）分裂迥异的生物学过程。
 
 <div style="text-align: center;">
   <img src="/images/blog12/fig1.png" alt="meiosis的使用频率随时间的变化" style="max-width: 100%; height: auto;" />
