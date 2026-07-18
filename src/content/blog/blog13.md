@@ -1,7 +1,7 @@
 ---
 title: ‘Always be a sophomore’
 publishDate: 2026-7-19
-description: ''
+description: '知之为知之，不知为不知，是知也'
 tags: ['thoughts', 'Growing up', 'personal settings']
 category: 'Pensées'
 ---
