@@ -84,10 +84,12 @@ if (!images[imagePath])
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='About'>
-        <p class='text-muted-foreground'>Writer / Sophomore</p>
-        <p class='text-muted-foreground'>
-          Major in molecular / information biology. She likes photography, linguistics and writes some stupid novels. Knowing well on Chinese & English, studying Russian & Japanese & French & Finnish
-        </p>
+        <ul class='list-disc pl-5 text-muted-foreground'>
+          <li class='mt-2 first:mt-0'>She wishes to be a writer / sophomore</li>
+          <li class='mt-2'>Majoring in molecular / bioinformatics</li>
+          <li class='mt-2'>She likes photography and linguistics, and writes silly novels. Fluent in Chinese and English; studying Russian, Japanese, French, and Finnish.</li>
+          <li class='mt-2'>Would you like a cupcake before we start?</li>
+        </ul>
         <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
       {

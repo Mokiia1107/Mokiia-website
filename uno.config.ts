@@ -160,6 +160,10 @@ const rules: Rule<object>[] = [
   ],
   ['object-cover', { 'object-fit': 'cover' }],
   ['bg-cover', { 'background-size': 'cover' }],
+  // presetMini lacks list utilities
+  ['list-disc', { 'list-style': 'disc' }],
+  ['list-decimal', { 'list-style': 'decimal' }],
+  ['list-none', { 'list-style': 'none' }],
   [
     /^line-clamp-(\d+)$/,
     ([, d]) => ({
