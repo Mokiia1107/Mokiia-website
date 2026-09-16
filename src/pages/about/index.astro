@@ -6,34 +6,63 @@ import ToolSection from '@/components/about/ToolSection.astro'
 import kimiIcon from '@/assets/tools/kimi-icon-rounded-corner.png'
 
 const headings = [
-  { depth: 2, slug: 'hobbies', text: 'Hobbies' },
+  { depth: 2, slug: 'self-introduction', text: 'Self Introduction' },
+  { depth: 2, slug: 'educational-background', text: 'Educational Background' },
+  { depth: 2, slug: 'laboratory-experiment', text: 'Laboratory Experiment' },
+  { depth: 2, slug: 'project-experience', text: 'Project Experience' },
+  { depth: 2, slug: 'skills', text: 'Skills' },
+  { depth: 2, slug: 'student-affairs', text: 'Student Affairs' },
   { depth: 2, slug: 'tools', text: 'Tools' },
   { depth: 2, slug: 'social-networks', text: 'Social Networks' },
-  { depth: 2, slug: 'gossips', text: 'Gossips' },
   { depth: 2, slug: 'about-blog', text: 'About Blog' }
 ]
 ---
 
 <PageLayout title='About' {headings}>
-  <p>Writer / Sophomore</p>
-  <p>
-  Major in molecular / information biology. 
-  She likes photography, linguistics and writes some stupid novels. 
-  Knowing well on Chinese & English, studying Russian & Japanese & French & Finnish
-  </p>
-  <p>
-    Motto: I'm not afraid of anything anymore. <Spoiler>以这样的心情写博客还是第一次</Spoiler>
 
-  {/* general-talk */}
-  <h2 id='hobbies'>Hobbies</h2>
-  <ul>
-    <li>Reading</li>
-    <li>Writing</li>
-    <li>Photography </li>
-    <li>Driving</li>
-  </ul>
+  <h2 id='self-introduction'>Self Introduction</h2>
+  <p>Hi there! 我是莫莫卡，目前就读于生命科学学院</p>
+  <p>目前作为本科生从事分子生物学的研究，也做一点计算生物学的工作 </p>
+  <p>爱好是读书、写作、摄影、语言学习，在准备跨专业考研的事情</p>
 
-  {/* tools */}
+  <h2 id='educational-background'>Educational Background</h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>2020年9月-2023年6月</td>
+        <td>北京市一零一中学国际部</td>
+        <td>AP program</td>
+      </tr>
+      <tr>
+        <td>2023年9月-2024年6月</td>
+        <td>首都师范大学化学系</td>
+        <td>应用化学</td>
+      </tr>
+      <tr>
+        <td>2024年9月-</td>
+        <td>首都师范大学生命科学学院</td>
+        <td>生物科学</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id='laboratory-experiment'>Laboratory Experiment</h2>
+  <h3 id='polymer-lab'>首都师范大学高分子及化工教研室</h3>
+  <p>时间：2023年10月-2024年6月</p>
+  <p>综述敷料材料研究前沿，并初步探究水凝胶材料的临床应用价值。</p>
+  <p>首都师范大学学报（自然科学版）(if=2.0)：<a href='https://www.sciopen.com/article/10.19789/j.1004-9398.2024.03.015' target='_blank'>用于烧伤创面治疗的无机敷料</a></p>
+  <h3 id='ubiquitin-lab'>首都师范大学泛素生物学实验室</h3>
+  <p>时间：2025年6月-</p>
+  <p>参与转录因子及其片段的生物学功能，纳米药物制备及递送研究，从事部分实验、检测工作。</p>
+  <p>目前着眼于转录因子的亚细胞动态与计算生物学研究。</p>
+  <p>Journal of Nanobiotechnology (if=15.0): 被接收，待刊登</p>
+
+  <h2 id='project-experience'>Project Experience</h2>
+
+  <h2 id='student-affairs'>Student Affairs</h2>
+
+  <h2 id='skills'>Skills</h2>
+
   <h2 id='tools'>Tools</h2>
   <p>Current support tools as follow:</p>
   <ToolSection
@@ -168,14 +197,6 @@ const headings = [
       }
     ]}
   />
-
-  {/* gossips */}
-  <h2 id='gossips'>Gossips</h2>
-  <Collapse title='抜粋'>
-    おもては雨が細かになって、春雨のようなしとしととした物静かな降り方をしていた。雪子は先刻の白葡萄酒が今になって循って来たらしくて、両頬にぽうッと火照りを感じながら、もう阪神国道を走っている車の窓から、微醺を帯びたチラチラする眼で、濡れた鋪装道路に映る無数のヘッドライトの交錯をうっとりと見ていた。
-    
-    ——谷崎潤一郎『細雪』上巻・第十一章
-  </Collapse>
 
   {/* about-blog */}
   <h2 id='about-blog'>About Blog</h2>
