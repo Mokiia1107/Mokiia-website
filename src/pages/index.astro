@@ -34,7 +34,7 @@ const postsByCategory = CATEGORIES.map(cat => {
       'category' in post.data &&
       typeof post.data.category === 'string' &&
       post.data.category.toLowerCase() === cat.name.toLowerCase()
-  ).slice(0, 3)
+  )
   return { ...cat, posts }
 })
 
