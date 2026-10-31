@@ -1,6 +1,6 @@
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark'
 import AstroPureIntegration from 'astro-pure'
-import { defineConfig, fontProviders } from 'astro/config'
+import { defineConfig, fontProviders, svgoOptimizer } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import { fileURLToPath } from 'node:url'
@@ -71,19 +71,21 @@ export default defineConfig({
 
   // [Markdown]
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [
-      [rehypeKatex, {}],
-      rehypeHeadingIds,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'append',
-          properties: { className: ['anchor'] },
-          content: { type: 'text', value: '#' }
-        }
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [
+        [rehypeKatex, {}],
+        rehypeHeadingIds,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'append',
+            properties: { className: ['anchor'] },
+            content: { type: 'text', value: '#' }
+          }
+        ]
       ]
-    ],
+    }),
     // https://docs.astro.build/en/guides/syntax-highlighting/
     shikiConfig: {
       themes: {
@@ -147,16 +149,9 @@ export default defineConfig({
     contentIntellisense: true,
     // Enable SVGO optimization for SVG assets
     // https://docs.astro.build/en/reference/experimental-flags/svg-optimization/
-    svgo: true,
+    svgOptimizer: svgoOptimizer(),
     // Enables pre-rendering your prefetched pages on the client in supported browsers.
     // https://docs.astro.build/en/reference/experimental-flags/client-prerender/
-    clientPrerender: true,
-    // Enables using the new Rust-based compiler for Astro files.
-    // https://docs.astro.build/en/reference/experimental-flags/rust-compiler/
-    rustCompiler: false,
-    // https://docs.astro.build/en/reference/experimental-flags/queued-rendering/
-    queuedRendering: {
-      enabled: true
-    }
+    clientPrerender: true
   }
 })
