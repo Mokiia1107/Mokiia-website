@@ -1,5 +1,5 @@
 ---
-title: '从一株"长斑"的拟南芥，到一个离子通道：SLAC1 论文课堂汇报记录'
+title: 'SLAC1——从一株"长斑"的拟南芥，到一个离子通道'
 publishDate: 2026-10-28
 description: '精读 Vahisalu et al. (2008) Nature：正向遗传学锁定植物保卫细胞 S 型阴离子通道 SLAC1 的完整故事线'
 tags: ['biology', 'plant physiology', 'paper reading', 'Arabidopsis', 'Nature 2008']
