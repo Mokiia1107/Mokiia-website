@@ -30,8 +30,8 @@ category: 'Linguistics'
 腭化带来的最显著影响，体现在现代普通话音节结构的互补分布上：g、k、h 只与开口呼、合口呼的韵母相拼，却从不与 i、 ü 搭配；而 j、q、x 则相反，只与齐齿呼、撮口呼的韵母相拼，却从不与 u 搭配。正因如此，与 j、q、x 搭配的 ü 可以放心地“脱帽”，而不必与 u 混淆。
 
 <div style="text-align: center;">
-  <img src="/images/blog16/fig2.png" alt="罗常培《唐五代西北方音》，国立中央研究院历史语言研究所单刊甲种之十二，上海，1933年，第24页（声类比较表）" style="max-width: 100%; height: auto;" />
-  <p style="text-align: center; margin-top: 0.5rem;">罗常培《唐五代西北方音》，国立中央研究院历史语言研究所单刊甲种之十二，上海，1933年，第24页（声类比较表）</p>
+  <img src="/images/blog16/fig2.png" alt="罗常培《唐五代西北方音》，国立中央研究院历史语言研究所单刊甲种之十二，上海，1933年，第24页" style="max-width: 100%; height: auto;" />
+  <p style="text-align: center; margin-top: 0.5rem;">罗常培《唐五代西北方音》，国立中央研究院历史语言研究所单刊甲种之十二，上海，1933年，第24页</p>
 </div>
 
 以“雞”为例，若腭化还未发生，则“雞”应被记为类似 *kie 的形式，而表中却记为 kye，这说明见母 k 后已产生了腭介音 -j-。据此，罗常培认为，见组音 k 早在晚唐五代的西北方音中已具有腭化的趋势。
