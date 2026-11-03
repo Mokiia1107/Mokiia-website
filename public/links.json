@@ -8,13 +8,21 @@
           "name": "JuniorTree",
           "intro": "你应当选择你真正热爱的",
           "link": "https://www.juniortree.com/",
-          "avatar": "https://s3.juniortree.com/pic/static/avatar.webp"
+          "avatar": "https://s3.juniortree.com/pic/static/avatar.webp",
+          "avatar_cache": {
+            "hash": "a00133e8d823b01a",
+            "path": "/avatars/a00133e8d823b01a.webp"
+          }
         },
         {
           "name": "Asutaka",
           "intro": "黑夜给了我一双黑色的眼睛，我却用它去寻找光明",
           "link": "https://www.asutaka.ink",
-          "avatar": "https://www.asutaka.ink/image/head.png"
+          "avatar": "https://www.asutaka.ink/image/head.png",
+          "avatar_cache": {
+            "hash": "d928a5e7e719ae79",
+            "path": "/avatars/d928a5e7e719ae79.png"
+          }
         }
       ]
     },
@@ -31,7 +39,11 @@
           "name": "Astro",
           "intro": "The web framework for content-driven websites",
           "link": "https://astro.build/",
-          "avatar": "https://avatars.githubusercontent.com/u/44914786?s=200&v=4"
+          "avatar": "https://avatars.githubusercontent.com/u/44914786?s=200&v=4",
+          "avatar_cache": {
+            "hash": "8e6669377929d5f2",
+            "path": "/avatars/8e6669377929d5f2.png"
+          }
         }
       ]
     }

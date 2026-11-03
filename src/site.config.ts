@@ -110,7 +110,7 @@ export const integ: IntegrationUserConfig = {
       { name: 'Avatar', val: 'https://www.m-literature.club/favicon/favicon.ico' }
     ],
     // Cache avatars in `public/avatars/` to improve user experience.
-    cacheAvatar: false
+    cacheAvatar: true
   },
   // [Search]
   pagefind: true,
