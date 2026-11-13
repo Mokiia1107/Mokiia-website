@@ -1,0 +1,39 @@
+---
+// 3D 工牌组件
+// 修改卡片内容 → 编辑同目录 badge.data.ts
+---
+
+<div class='badge-wrap'>
+  <div class='badge-stage' data-badge-stage></div>
+  <p class='badge-hint'>拖动卡面摇摆 · 点击卡面翻面 · 修改内容请编辑 badge.data.ts</p>
+</div>
+
+<script>
+  import { badge } from './badge.data'
+  import { initBadge } from './badge3d'
+
+  const stage = document.querySelector<HTMLElement>('[data-badge-stage]')
+  if (stage) void initBadge(stage, badge)
+</script>
+
+<style>
+  .badge-wrap {
+    margin: 0 0 1.5rem;
+    width: 100%;
+  }
+  .badge-stage {
+    width: 100%;
+    height: 580px;
+  }
+  @media (max-width: 640px) {
+    .badge-stage {
+      height: 480px;
+    }
+  }
+  .badge-hint {
+    margin: 0.25rem 0 0;
+    text-align: center;
+    font-size: 0.75rem;
+    color: hsl(var(--muted-foreground) / 0.6);
+  }
+</style>

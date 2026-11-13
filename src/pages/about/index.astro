@@ -1,6 +1,7 @@
 ---
 import { Button, Collapse, Spoiler, Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
+import Badge from '@/components/about/Badge.astro'
 import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
 import kimiIcon from '@/assets/tools/kimi-icon-rounded-corner.png'
@@ -19,6 +20,8 @@ const headings = [
 ---
 
 <PageLayout title='About' {headings}>
+
+  <Badge />
 
   <h2 id='self-introduction'>Self Introduction</h2>
   <p>Hi there! 我是莫莫卡，目前就读于生命科学学院</p>

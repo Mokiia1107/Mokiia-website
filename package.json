@@ -33,10 +33,12 @@
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "sharp": "^0.35.5",
+    "three": "^0.187.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@types/three": "^0.187.0",
     "@typescript-eslint/parser": "^8.59.0",
     "eslint": "^10.2.1",
     "eslint-plugin-astro": "^1.7.0",
