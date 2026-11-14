@@ -291,16 +291,20 @@ function drawBack(data: BadgeData): HTMLCanvasElement {
   return canvas
 }
 
-// 挂绳纹理：返回 tileRatio = along / across
-function drawStrap(text: string): { canvas: HTMLCanvasElement; tileRatio: number } {
+// 挂绳纹理：覆盖整条挂绳长度（不平铺），顶端淡色渐变到底端深色
+function drawStrap(text: string): HTMLCanvasElement {
   const { primary, fontFamily } = themeColors()
   const canvas = document.createElement('canvas')
   canvas.width = 192
   canvas.height = 768
   const ctx = canvas.getContext('2d')!
 
+  // 整条挂绳共用一个渐变：顶端淡色 → 中段主题色 → 底端深色
+  const m = primary.match(/([\d.]+)[ ,]+([\d.]+)%[ ,]+([\d.]+)%/)
+  const light = m ? `hsl(${m[1]}, ${m[2]}%, ${Math.min(92, parseFloat(m[3]) + 20)}%)` : primary
   const bg = ctx.createLinearGradient(0, 0, 0, 768)
-  bg.addColorStop(0, primary)
+  bg.addColorStop(0, light)
+  bg.addColorStop(0.55, primary)
   bg.addColorStop(1, '#0f172a')
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, 192, 768)
@@ -336,7 +340,7 @@ function drawStrap(text: string): { canvas: HTMLCanvasElement; tileRatio: number
       ctx.restore()
     }
   }
-  return { canvas, tileRatio: 768 / 192 }
+  return canvas
 }
 
 function loadPhoto(src: string): Promise<HTMLImageElement | null> {
@@ -887,7 +891,7 @@ export async function initBadge(
   const photoImg = await loadPhoto(data.front.photo)
   const frontCanvas = drawFront(data, photoImg)
   const backCanvas = drawBack(data)
-  const { canvas: strapCanvas, tileRatio } = drawStrap(data.strapText)
+  const strapCanvas = drawStrap(data.strapText)
 
   let renderer: THREE.WebGLRenderer
   try {
@@ -943,7 +947,7 @@ export async function initBadge(
   strapTexture.wrapS = THREE.ClampToEdgeWrapping
   strapTexture.wrapT = THREE.RepeatWrapping
   const weave = buildWeaveTexture()
-  weave.repeat.set(2, 2 * tileRatio)
+  weave.repeat.set(2, (2 * ROPE_LENGTH) / STRAP_SCALE)
 
   // 卡面印刷色直出，不参与光照/镀层（参照实现的 crispFront 方案）
   const frontMaterial = new THREE.MeshBasicMaterial({ map: frontTexture, toneMapped: false })
@@ -1108,7 +1112,6 @@ export async function initBadge(
     const uv = bandGeometry.getAttribute('uv') as THREE.BufferAttribute
     const columns = BAND_COLUMNS.length
     const restLength = sim.rest * JOINTS
-    const repeats = restLength / (STRAP_SCALE * tileRatio)
     const width = STRAP_SCALE / Math.pow(Math.max(1, length / Math.max(restLength, 0.001)), 0.35)
     const { tangent, toCamera, across, facing } = work
     for (let i = 0; i < SAMPLES; i++) {
@@ -1125,7 +1128,7 @@ export async function initBadge(
       across.copy(side).multiplyScalar(Math.cos(angle)).addScaledVector(facing, Math.sin(angle))
       facing.crossVectors(tangent, across)
       const p = points[i]
-      const v = (1 - i / (SAMPLES - 1)) * repeats
+      const v = 1 - i / (SAMPLES - 1)
       for (let c = 0; c < columns; c++) {
         const k = i * columns + c
         const offset = (BAND_COLUMNS[c] - 0.5) * width
