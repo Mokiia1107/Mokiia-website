@@ -51,21 +51,21 @@ export const badge: BadgeData = {
     brand: 'About',
     passType: 'CREW InFo',
     photo: '/images/头像.jpg',
-    portraitLabel: 'XXX',
-    portraitEdition: 'XXX',
+    portraitLabel: '',
+    portraitEdition: '',
     name: 'Mokiia',
     alias: '莫莫卡',
-    seal: 'XXX',
-    role: 'XXX',
-    motto: ['XXX', 'XXX'],
-    code: 'XXX',
-    note: 'XXX'
+    seal: '',
+    role: '文学部部长',
+    motto: ['已经，没什么好害怕的了', ''],
+    code: 'have a nice weekend!',
+    note: 'mokiia.chr'
   },
   back: {
-    kicker: 'XXX',
-    title: ['XXX', 'XXX'],
-    features: ['XXX', 'XXX', 'XXX'],
-    catchLabel: 'XXX',
-    catchphrase: 'XXX'
+    kicker: 'Okay, Everyone!',
+    title: ['Are you into reading?', 'No need for being coy!'],
+    features: ['感谢你成为我文学部的一员！', 'Thank you for being a part of my Literature Club!', ''],
+    catchLabel: '不要迟疑，还有，记得随时保存你的游戏进度',
+    catchphrase: 'by Mokiia'
   }
 }
