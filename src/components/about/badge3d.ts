@@ -25,6 +25,9 @@ const CLAMP_BODY = 0.15
 const FLIP_SPIN = 9
 const BAND_COLUMNS = [0, 0.07, 0.93, 1]
 const BAND_BEND = [-0.95, -0.28, 0.28, 0.95]
+// 恒定像素比例：卡片在屏幕上恒为约 340px 高，挂绳约 250px 长
+const WORLD_PER_PX = CARD_H / 340
+const ROPE_LENGTH = 250 * WORLD_PER_PX
 
 // ---------- 主题 ----------
 
@@ -89,6 +92,10 @@ function drawFront(data: BadgeData, photoImg: HTMLImageElement | null): HTMLCanv
   bg.addColorStop(1, '#e9f0f0')
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, TEX_W, TEX_H)
+  ctx.strokeStyle = 'rgba(15,23,42,0.16)'
+  ctx.lineWidth = 5
+  roundRectPath(ctx, 3, 3, TEX_W - 6, TEX_H - 6, 38)
+  ctx.stroke()
 
   drawTopline(ctx, fontFamily, data.front.brand, data.front.passType, '#0f172a', 'rgba(15,23,42,0.55)')
 
@@ -222,6 +229,10 @@ function drawBack(data: BadgeData): HTMLCanvasElement {
   bg.addColorStop(1, '#1b2340')
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, TEX_W, TEX_H)
+  ctx.strokeStyle = 'rgba(255,255,255,0.22)'
+  ctx.lineWidth = 5
+  roundRectPath(ctx, 3, 3, TEX_W - 6, TEX_H - 6, 38)
+  ctx.stroke()
 
   // accent waves
   ctx.fillStyle = primary
@@ -867,7 +878,11 @@ const stepSimulation = (sim: Sim, dt: number, physics: Physics, time: number) =>
 
 // ---------- 主入口 ----------
 
-export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<void> {
+export async function initBadge(
+  stage: HTMLElement,
+  data: BadgeData,
+  anchorEl?: HTMLElement | null
+): Promise<void> {
   await document.fonts.ready
   const photoImg = await loadPhoto(data.front.photo)
   const frontCanvas = drawFront(data, photoImg)
@@ -893,7 +908,16 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
   dom.style.display = 'block'
   dom.style.width = '100%'
   dom.style.height = '100%'
-  dom.style.touchAction = 'pan-y'
+  dom.style.pointerEvents = 'none'
+  // 全页覆盖层：挂绳从页面顶端垂下，卡片可在整页范围内拖拽
+  const root = document.body
+  root.style.position = 'relative'
+  stage.style.position = 'absolute'
+  stage.style.inset = '0'
+  stage.style.pointerEvents = 'none'
+  stage.style.zIndex = '30'
+  stage.style.overflow = 'hidden'
+  root.appendChild(stage)
   stage.appendChild(dom)
 
   const anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy())
@@ -918,30 +942,13 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
   const strapTexture = makeTex(strapCanvas)
   strapTexture.wrapS = THREE.ClampToEdgeWrapping
   strapTexture.wrapT = THREE.RepeatWrapping
-  const grain = buildGrainTexture()
   const weave = buildWeaveTexture()
   weave.repeat.set(2, 2 * tileRatio)
 
-  // glossy finish
-  const frontMaterial = new THREE.MeshPhysicalMaterial({
-    map: frontTexture,
-    normalMap: grain,
-    normalScale: new THREE.Vector2(0.015, 0.015),
-    roughness: 0.42,
-    metalness: 0,
-    clearcoat: 1,
-    clearcoatRoughness: 0.06
-  })
-  const backMaterial = new THREE.MeshPhysicalMaterial({
-    map: backTexture,
-    normalMap: grain,
-    normalScale: new THREE.Vector2(0.06, 0.06),
-    roughness: 0.42,
-    metalness: 0,
-    clearcoat: 1,
-    clearcoatRoughness: 0.06
-  })
-  const edgeMaterial = new THREE.MeshPhysicalMaterial()
+  // 卡面印刷色直出，不参与光照/镀层（参照实现的 crispFront 方案）
+  const frontMaterial = new THREE.MeshBasicMaterial({ map: frontTexture, toneMapped: false })
+  const backMaterial = new THREE.MeshBasicMaterial({ map: backTexture, toneMapped: false })
+  const edgeMaterial = new THREE.MeshPhysicalMaterial({ envMapIntensity: 0.5 })
   const metalMaterial = new THREE.MeshStandardMaterial({ metalness: 1 })
   metalMaterial.color.set('#d9dce2')
   metalMaterial.roughness = 0.16
@@ -961,10 +968,10 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
   const cardGroup = new THREE.Group()
   const bodyMesh = new THREE.Mesh(cardGeo.body, edgeMaterial)
   const frontMesh = new THREE.Mesh(cardGeo.face, frontMaterial)
-  frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0006
+  frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0012
   const backMesh = new THREE.Mesh(cardGeo.face.clone(), backMaterial)
   backMesh.rotation.y = Math.PI
-  backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0006)
+  backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0012)
   const ring = new THREE.Mesh(new THREE.TorusGeometry(RING_RADIUS, RING_TUBE, 18, 72), metalMaterial)
   ring.rotation.y = Math.PI / 2 - 0.7
   ring.position.set(0, layout.ringY, 0)
@@ -998,26 +1005,47 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
   let hovering = false
   let press: { x: number; y: number; time: number; point: THREE.Vector3 } | null = null
 
+  let framed = false
   const frameView = () => {
     const aspect = view.width / view.height
-    let viewHeight = layout.height / 0.55
+    let viewHeight = view.height * WORLD_PER_PX
     const minimumWidth = layout.width / 0.72
     if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect
     const viewWidth = viewHeight * aspect
+    const camZ = viewHeight / 2 / Math.tan((FOV * Math.PI) / 360)
     camera.aspect = aspect
-    camera.position.set(0, 0, viewHeight / 2 / Math.tan((FOV * Math.PI) / 360))
+    camera.position.set(0, 0, camZ)
+    // 相机离场景很远（全页画布），收紧 near/far 换取深度精度，避免卡面与挤出盖 z-fighting
+    camera.near = Math.max(0.05, camZ - 8)
+    camera.far = camZ + 8
     camera.lookAt(0, 0, 0)
     camera.updateProjectionMatrix()
     camera.updateMatrixWorld()
-    const anchorX = 0
-    const anchorY = viewHeight / 2 + 0.2
-    const cardTop = viewHeight / 2 - viewHeight * 0.27
-    const hangTop = cardTop + (layout.hangY - layout.height / 2)
-    sim.anchor.set(anchorX, anchorY, 0)
-    configureSimulation(sim, layout, anchorY - hangTop)
+    // 锚点对齐文字栏目的水平中心（文档坐标），而非页面正中
+    let anchorX = 0
+    if (anchorEl) {
+      const rect = anchorEl.getBoundingClientRect()
+      const stageRect = stage.getBoundingClientRect()
+      const centerPx = rect.left - stageRect.left + rect.width / 2
+      anchorX = (centerPx / view.width - 0.5) * viewWidth
+    }
+    // 页面高度变化时平移整个仿真状态，避免锚点瞬移拉扯卡片
+    const delta = scratch.d.set(anchorX, viewHeight / 2 - 0.1, 0).sub(sim.anchor)
+    if (!framed) {
+      framed = true
+      sim.anchor.add(delta)
+    } else if (delta.lengthSq() > 1e-10) {
+      sim.anchor.add(delta)
+      for (let i = 0; i <= JOINTS; i++) {
+        sim.nodes[i].add(delta)
+        sim.previous[i].add(delta)
+      }
+      sim.body.position.add(delta)
+      sim.body.previous.add(delta)
+    }
+    configureSimulation(sim, layout, ROPE_LENGTH)
     sim.nodes[0].copy(sim.anchor)
     sim.previous[0].copy(sim.anchor)
-    void viewWidth
   }
 
   const physics = (): Physics => {
@@ -1175,7 +1203,7 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
   }
 
   const setCursor = (value: string) => {
-    if (dom.style.cursor !== value) dom.style.cursor = value
+    if (document.body.style.cursor !== value) document.body.style.cursor = value
   }
 
   const flip = (point: THREE.Vector3) => {
@@ -1203,7 +1231,6 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
       target: hit.point.clone()
     }
     press = { x: event.clientX, y: event.clientY, time: performance.now(), point: hit.point.clone() }
-    dom.setPointerCapture(event.pointerId)
     setCursor('grabbing')
     event.preventDefault()
     start()
@@ -1231,16 +1258,23 @@ export async function initBadge(stage: HTMLElement, data: BadgeData): Promise<vo
     sim.grab = null
     if (press && event.type === 'pointerup' && performance.now() - press.time < 450) flip(press.point)
     press = null
-    if (dom.hasPointerCapture(event.pointerId)) dom.releasePointerCapture(event.pointerId)
     setCursor(hovering && event.pointerType !== 'touch' ? 'grab' : '')
     start()
   }
 
-  dom.addEventListener('pointerdown', onPointerDown)
-  dom.addEventListener('pointermove', onPointerMove)
-  dom.addEventListener('pointerup', onPointerUp)
-  dom.addEventListener('pointercancel', onPointerUp)
-  dom.addEventListener('lostpointercapture', onPointerUp)
+  // 触屏：按住卡片时阻止页面滚动
+  const onTouchStart = (event: TouchEvent) => {
+    if (event.touches.length !== 1) return
+    const t = event.touches[0]
+    toPointer(t as unknown as PointerEvent)
+    if (pickCard()) event.preventDefault()
+  }
+
+  window.addEventListener('pointerdown', onPointerDown)
+  window.addEventListener('pointermove', onPointerMove)
+  window.addEventListener('pointerup', onPointerUp)
+  window.addEventListener('pointercancel', onPointerUp)
+  window.addEventListener('touchstart', onTouchStart, { passive: false })
 
   const resize = () => {
     view.width = Math.max(1, stage.clientWidth)
