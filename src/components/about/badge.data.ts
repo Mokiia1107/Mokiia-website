@@ -46,15 +46,15 @@ export interface BadgeData {
 }
 
 export const badge: BadgeData = {
-  strapText: 'MOKIIA',
+  strapText: 'Literature Club',
   front: {
-    brand: 'XXX',
-    passType: 'CREW PASS',
-    photo: '',
+    brand: 'About',
+    passType: 'CREW InFo',
+    photo: '/images/头像.jpg',
     portraitLabel: 'XXX',
     portraitEdition: 'XXX',
-    name: 'XXX',
-    alias: 'XXX',
+    name: 'Mokiia',
+    alias: '莫莫卡',
     seal: 'XXX',
     role: 'XXX',
     motto: ['XXX', 'XXX'],
