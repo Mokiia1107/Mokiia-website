@@ -26,7 +26,7 @@ const FLIP_SPIN = 9
 const BAND_COLUMNS = [0, 0.07, 0.93, 1]
 const BAND_BEND = [-0.95, -0.28, 0.28, 0.95]
 // 恒定像素比例：卡片在屏幕上恒为约 408px 高，挂绳约 250px 长
-const WORLD_PER_PX = CARD_H / 408
+const WORLD_PER_PX = CARD_H / 450
 const ROPE_LENGTH = 250 * WORLD_PER_PX
 
 // ---------- 主题 ----------
@@ -146,8 +146,8 @@ function drawFront(data: BadgeData, photoImg: HTMLImageElement | null): HTMLCanv
     ctx.textBaseline = 'middle'
     ctx.fillText(text, cx + w / 2, py + ps - 38)
   }
-  if (data.front.portraitLabel) chip(false)
-  if (data.front.portraitEdition) chip(true)
+  if (data.front.portraitLabel) chip(data.front.portraitLabel, false)
+  if (data.front.portraitEdition) chip(data.front.portraitEdition, true)
 
   // name + alias + seal
   ctx.textAlign = 'left'
