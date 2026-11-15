@@ -1,4 +1,7 @@
-// 3D 工牌：移植自 ai-crew-pass 的 React Bits Lanyard（MIT + Commons Clause）
+// 3D 工牌：移植自 fanhuayishiy/ai-crew-pass 的 Lanyard 实现
+// 上游：React Bits Lanyard（MIT + Commons Clause，Copyright 2026 David Haz）
+//      与 xu-yaoting/hanging-pass（MIT，Copyright 2026 Hanging Pass contributors）
+// 完整许可文本见仓库根目录 THIRD_PARTY_NOTICES.md
 // 刚体卡片 + 绳段物理、开孔卡片、PMREM 摄影棚环境、金属件、多列挂绳
 import * as THREE from 'three'
 import type { BadgeData } from './badge.data'

@@ -94,6 +94,6 @@ bun pure new
 
 ## 许可证
 
-本项目基于 Apache 2.0 许可证。
+本项目整体基于 Apache 2.0 许可证。about 页面的 3D 工牌组件（`src/components/about/`）移植自第三方，遵循其各自许可（React Bits：MIT + Commons Clause；hanging-pass 与 ai-crew-pass：MIT），Inter 字体遵循 SIL OFL 1.1，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 [![Star History Chart](https://api.star-history.com/svg?repos=cworld1/astro-theme-pure&type=Date)](https://star-history.com/#cworld1/astro-theme-pure&Date)

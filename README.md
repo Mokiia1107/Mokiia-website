@@ -94,6 +94,6 @@ Other third party references are on [Docs#Contributions](https://astro-pure.js.o
 
 ## License
 
-This project is licensed under the Apache 2.0 License.
+This project is licensed under the Apache 2.0 License. The 3D badge component on the about page (`src/components/about/`) is ported from third parties and remains under their respective licenses (React Bits: MIT + Commons Clause; hanging-pass & ai-crew-pass: MIT), and the Inter font is under SIL OFL 1.1 — see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 [![Star History Chart](https://api.star-history.com/svg?repos=cworld1/astro-theme-pure&type=Date)](https://star-history.com/#cworld1/astro-theme-pure&Date)
