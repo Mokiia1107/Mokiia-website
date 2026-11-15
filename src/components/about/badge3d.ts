@@ -25,8 +25,8 @@ const CLAMP_BODY = 0.15
 const FLIP_SPIN = 9
 const BAND_COLUMNS = [0, 0.07, 0.93, 1]
 const BAND_BEND = [-0.95, -0.28, 0.28, 0.95]
-// 恒定像素比例：卡片在屏幕上恒为约 340px 高，挂绳约 250px 长
-const WORLD_PER_PX = CARD_H / 340
+// 恒定像素比例：卡片在屏幕上恒为约 408px 高，挂绳约 250px 长
+const WORLD_PER_PX = CARD_H / 408
 const ROPE_LENGTH = 250 * WORLD_PER_PX
 
 // ---------- 主题 ----------
