@@ -1037,7 +1037,7 @@ export async function initBadge(
       anchorX = (centerPx / view.width - 0.5) * viewWidth
     }
     // 页面高度变化时平移整个仿真状态，避免锚点瞬移拉扯卡片
-    const delta = scratch.d.set(anchorX, viewHeight / 2 - 0.1, 0).sub(sim.anchor)
+    const delta = scratch.d.set(anchorX, viewHeight / 2 - -0.1, 0).sub(sim.anchor)
     if (!framed) {
       framed = true
       sim.anchor.add(delta)
